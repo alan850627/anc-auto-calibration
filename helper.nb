@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      3113,        106]
-NotebookOptionsPosition[      2801,         90]
-NotebookOutlinePosition[      3143,        105]
-CellTagsIndexPosition[      3100,        102]
+NotebookDataLength[      3503,        115]
+NotebookOptionsPosition[      3154,         98]
+NotebookOutlinePosition[      3496,        113]
+CellTagsIndexPosition[      3453,        110]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -21,6 +21,9 @@ Notebook[{
 
 Cell[CellGroupData[{
 Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"Ra1", ",", "Ra2", ",", "R12", ",", "point1", ",", "point2"}], 
+  "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Ra1", "=", "4"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -70,7 +73,8 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.7316797154991007`*^9, 3.7316799017728415`*^9}, {
   3.731680061301491*^9, 3.7316800898804984`*^9}, {3.7316801812255454`*^9, 
-  3.7316801961785383`*^9}, {3.7316804061415763`*^9, 3.731680412033514*^9}}],
+  3.7316801961785383`*^9}, {3.7316804061415763`*^9, 3.731680412033514*^9}, {
+  3.731680445493932*^9, 3.73168046658803*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -85,8 +89,12 @@ Cell[BoxData[
      RowBox[{"x", "\[Rule]", "4"}], ",", 
      RowBox[{"y", "\[Rule]", "3"}]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.7316800665169754`*^9, 3.731680090381835*^9}, 
-   3.7316801967309093`*^9, 3.731680412500827*^9}]
-}, Open  ]]
+   3.7316801967309093`*^9, 3.731680412500827*^9, 3.7316804674896317`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7316805308269615`*^9, 3.7316805327132225`*^9}, {
+  3.731682489558302*^9, 3.7316824902761917`*^9}}]
 },
 WindowSize->{1264, 353},
 WindowMargins->{{0, Automatic}, {0, Automatic}},
@@ -105,12 +113,12 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 1763, 50, 212, "Input"],
-Cell[2346, 74, 439, 13, 31, "Output"]
-}, Open  ]]
+Cell[580, 22, 1942, 54, 232, "Input"],
+Cell[2525, 78, 463, 13, 31, "Output"]
+}, Open  ]],
+Cell[3003, 94, 147, 2, 31, "Input"]
 }
 ]
 *)
 
 (* End of internal cache information *)
-
