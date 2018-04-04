@@ -51,6 +51,7 @@ class StateMachine(object):
       if self.counter > 10:
         self.counter = 0
         self.alternate_counter = 0
+        self.cycle_counter = 0
         self.mod_line = 0
         self.prev_state = state.MOD_AMP_MAKE_LOUD
         self.state = state.MOD_AMP
@@ -68,7 +69,12 @@ class StateMachine(object):
       self.cur_sound = avg.get(max(mic1_rms, mic2_rms))
 
       if self.counter > 10:
-        if (self.alternate_counter > 4):
+        if (self.cur_sound < config.BASE_SOUND or self.cycle_counter >= config.MAX_CYCLES): 
+          self.state = state.DONE
+          self.counter = 0
+
+        elif (self.alternate_counter > 4):
+          self.cycle_counter += 1
           self.alternate_counter = 0
           self.prev_state = state.MOD_PHASE_DLY
           self.state = state.MOD_PHASE
@@ -109,7 +115,11 @@ class StateMachine(object):
       self.cur_sound = avg.get(max(mic1_rms, mic2_rms))
 
       if self.counter > 10:
-        if (self.alternate_counter > 4):
+        if (self.cur_sound < config.BASE_SOUND or self.cycle_counter >= config.MAX_CYCLES): 
+          self.state = state.DONE
+          self.counter = 0
+
+        elif (self.alternate_counter > 4):
           self.alternate_counter = 0
           self.prev_state = state.MOD_AMP_MAKE_QUIET
           self.state = state.MOD_AMP
@@ -141,6 +151,17 @@ class StateMachine(object):
       line = self.lines[self.mod_line].expedite()
       print(self.state, self.mod_line, self.cur_sound)
       self.state = state.MOD_PHASE
+
+    #####################################
+    elif self.state == state.DONE:
+      if self.counter > 300:
+        self.counter = 0
+        mic1_rms = signals.rms(hp1.process(decoded[config.CH_HEAD_MIC_1]))
+        mic2_rms = signals.rms(hp2.process(decoded[config.CH_HEAD_MIC_2]))
+        print("Mic 1: %d, Mic 2: %d" %(mic1_rms, mic2_rms))
+        for i, line in enumerate(self.lines):
+          print("Line %d, Amp: %d, Dly: %d" %(i, line.amp, line.dly))        
+
 
     self.counter += 1
     return signals.encode(out)
