@@ -42,10 +42,11 @@ class StateMachine(object):
     out = [[0]*config.CHUNK for i in range(0,config.CHANNELS)]
     out[config.CH_N_SPK] = sine.get(config.NOISE[0])
 
+    for line in self.lines:
+        out[line.out_channel] = line.process(decoded[line.in_channel])
+
     #####################################
     if self.state == state.STARTED:
-      for line in self.lines:
-        out[line.out_channel] = line.process(decoded[line.in_channel])
 
       if self.counter > 10:
         self.counter = 0
@@ -65,9 +66,6 @@ class StateMachine(object):
       mic1_rms = signals.rms(hp1.process(decoded[config.CH_HEAD_MIC_1]))
       mic2_rms = signals.rms(hp2.process(decoded[config.CH_HEAD_MIC_2]))
       self.cur_sound = avg.get(max(mic1_rms, mic2_rms))
-
-      for line in self.lines:
-        out[line.out_channel] = line.process(decoded[line.in_channel])
 
       if self.counter > 10:
         if (self.alternate_counter > 4):
@@ -109,9 +107,6 @@ class StateMachine(object):
       mic1_rms = signals.rms(hp1.process(decoded[config.CH_HEAD_MIC_1]))
       mic2_rms = signals.rms(hp2.process(decoded[config.CH_HEAD_MIC_2]))
       self.cur_sound = avg.get(max(mic1_rms, mic2_rms))
-
-      for line in self.lines:
-        out[line.out_channel] = line.process(decoded[line.in_channel])
 
       if self.counter > 10:
         if (self.alternate_counter > 4):
