@@ -160,7 +160,7 @@ class StateMachine(object):
         mic2_rms = signals.rms(hp2.process(decoded[config.CH_HEAD_MIC_2]))
         print("Mic 1: %d, Mic 2: %d" %(mic1_rms, mic2_rms))
         for i, line in enumerate(self.lines):
-          print("Line %d, Amp: %d, Dly: %d" %(i, line.amp, line.dly))        
+          print("Line %d, Amp: %f, Dly: %d" %(i, line.amp, line.dly))        
 
 
     self.counter += 1
