@@ -90,7 +90,7 @@ class StateMachine(object):
     elif self.state == state.MOD_AMP_MAKE_LOUD:
       self.prev_state = state.MOD_AMP_MAKE_LOUD
       line = self.lines[self.mod_line]
-      line.amp += 0.01
+      line.amp += 0.002
       print(self.state, self.mod_line, self.cur_sound)
       self.state = state.MOD_AMP
 
@@ -98,7 +98,7 @@ class StateMachine(object):
     elif self.state == state.MOD_AMP_MAKE_QUIET:
       self.prev_state = state.MOD_AMP_MAKE_QUIET
       line = self.lines[self.mod_line]
-      line.amp -= 0.01
+      line.amp -= 0.002
       print(self.state, self.mod_line, self.cur_sound)
       self.state = state.MOD_AMP
 
