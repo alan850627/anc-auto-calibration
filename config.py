@@ -27,8 +27,8 @@ CH_N_SPK = 2
 
 # (amp, dly)
 NOISE=(5000,0)
-SPK1=(0,288)
-SPK2=(0,226)
+SPK1=(0,101)
+SPK2=(0,126)
 
 FREQ = 800
 PERIOD = int(RATE/FREQ) 
