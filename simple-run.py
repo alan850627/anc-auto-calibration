@@ -1,6 +1,5 @@
 
 import config
-import config
 import signals
 import pyaudio
 import time
@@ -22,8 +21,7 @@ lines.append(signals.Line(
 def callback(data, frame_count, time_info, status):
   decoded = signals.decode(data)
   out = [[0]*config.CHUNK for i in range(0,config.CHANNELS)]
-  out[config.CH_N_SPK] = sine.get(config.NOISE[0])
-
+  out[config.CH_NOISE_SPK] = sine.get(config.NOISE[0])
   for line in lines:
       out[line.out_channel] = line.process(decoded[line.in_channel])
 

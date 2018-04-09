@@ -40,7 +40,7 @@ class StateMachine(object):
   def process(self, data):
     decoded = signals.decode(data)
     out = [[0]*config.CHUNK for i in range(0,config.CHANNELS)]
-    out[config.CH_N_SPK] = sine.get(config.NOISE[0])
+    out[config.CH_NOISE_SPK] = sine.get(config.NOISE[0])
 
     for line in self.lines:
         out[line.out_channel] = line.process(decoded[line.in_channel])
